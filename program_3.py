@@ -1,19 +1,22 @@
-# Program #3: Average Numbers
-# Assume a file containing a series of integers is named numbers.txt and exists on the computer's disk.
-# (please use the provided numbers.txt)
-# Write a program that reads all of the numbers stored in the file and calculates their total.  
+# Eliya Statema
+# 3/27/25
+# Number Total
 
-# The program should handle the following exceptions: 
-
-# It should handle any IOError exceptions that are raised.
-# It should handle any ValueError exceptions that are raised when the items that are read from the file 
-# are converted to a number.
 def sum_numbers_from_file():
-    ######################
-    # Add your code here #
-    ######################
-    print('In the sum_numbers_from_file function')
+    file = open("numbers.txt", "r")
+    total = 0
+    try:
+        for line in file:
+            number = int(line)
+            total += number
+        print(f"The total of the numbers in 'numbers.txt' is: {total:,}")
 
-# You don't need to change anything below this line:
+    except ValueError:
+        print("Invalid value found in file.")
+    except IOError:
+        print("An error occurred while reading the file.")
+
+        file.close()
+
 if __name__ == '__main__':
     sum_numbers_from_file()
